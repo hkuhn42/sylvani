@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" name="org.sylvani.openhab.io.voice.http.VoiceIOApp">
+   <implementation class="org.sylvani.io.voice.http.VoiceIOApp"/>
+   <reference bind="setHttpService" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="static" unbind="unsetHttpService"/>
+   
+   <reference bind="setRecognitionService" cardinality="1..1" interface="org.sylvani.io.voice.IRecognitionService" name="IRecognitionService" policy="static" unbind="unsetRecognitionService"/>
+   <reference bind="setSyntheziserService" cardinality="1..1" interface="org.sylvani.io.voice.ISyntheziserService" name="ISyntheziserService" policy="static" unbind="unsetSyntheziserService"/>
+   <reference bind="setCommandInterpreter" cardinality="1..1" interface="org.sylvani.io.interpreter.ICommandInterpreter" name="ICommandInterpreter" policy="static" unbind="unsetCommandInterpreter"/>
+   <service>
+      <provide interface="org.eclipse.smarthome.core.events.EventSubscriber"/>
+   </service>
+</scr:component>

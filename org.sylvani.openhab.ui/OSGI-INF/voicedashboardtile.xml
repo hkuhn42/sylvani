@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.sylvani.openhab.ui">
+   <implementation class="org.sylvani.openhab.ui.VoiceDashboardTile"/>
+   <service>
+      <provide interface="org.openhab.ui.dashboard.DashboardTile"/>
+   </service>
+</scr:component>

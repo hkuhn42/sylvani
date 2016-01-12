@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="sylvaniAudio"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+        xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+    <!-- Sample Thing Type -->
+    <thing-type id="audioDevice">
+        <label>Audio Device</label>
+        <description>A audio device (currently only local)</description>
+    </thing-type>
+
+    <!-- Sample Channel Type -->
+    <channel-type id="microphone">
+        <item-type>recorder</item-type>
+        <label>Microphone</label>
+        <description>Audio microphone</description>
+    </channel-type>
+
+    <channel-type id="speaker">
+        <item-type>player</item-type>
+        <label>Speaker</label>
+        <description>Audio speaker</description>
+    </channel-type>
+
+</thing:thing-descriptions>

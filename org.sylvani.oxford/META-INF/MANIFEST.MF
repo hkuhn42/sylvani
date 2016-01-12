@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: oxford recognition plugin
+Bundle-SymbolicName: org.sylvani.oxford;singleton:=true
+Bundle-Vendor: sylvani oxford plugin
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.8
+Bundle-ClassPath: .,
+ lib/commons-io-2.4.jar,
+ lib/jersey-proxy-client-2.18.jar
+Import-Package: com.eclipsesource.jaxrs.provider.gson,
+ com.google.common.collect,
+ com.google.gson,
+ com.google.gson.annotations,
+ org.eclipse.emf.common.util,
+ org.eclipse.smarthome.config.core,
+ org.eclipse.smarthome.core.common.registry,
+ org.eclipse.smarthome.core.library.types,
+ org.eclipse.smarthome.core.thing,
+ org.eclipse.smarthome.core.thing.binding,
+ org.eclipse.smarthome.core.thing.type,
+ org.eclipse.smarthome.core.thing.util,
+ org.eclipse.smarthome.core.types,
+ org.eclipse.smarthome.model.sitemap,
+ org.eclipse.smarthome.model.sitemap.impl,
+ org.eclipse.smarthome.model.sitemap.util,
+ org.eclipse.smarthome.ui.items,
+ org.osgi.service.component,
+ org.osgi.service.http,
+ org.slf4j
+Service-Component: OSGI-INF/*
+Export-Package: org.sylvani.oxford
+Require-Bundle: com.eclipsesource.jaxrs.jersey-all;bundle-version="2.22.1",
+ org.sylvani.io;bundle-version="2.0.0"
+

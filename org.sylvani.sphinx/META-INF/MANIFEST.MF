@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sphinx recognition plugin
+Bundle-SymbolicName: org.sylvani.sphinx;singleton:=true
+Bundle-Vendor: HACK
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.8
+Bundle-ClassPath: .,
+ lib/commons-io-2.4.jar,
+ lib/sphinx4-core-5prealpha-20151122.150846-2.jar,
+ lib/sphinx4-data-5prealpha-20151122.150853-2.jar
+Import-Package: org.osgi.service.component,
+ org.slf4j
+Service-Component: OSGI-INF/*
+Export-Package: org.sylvani.sphinx
+Require-Bundle: org.sylvani.io;bundle-version="2.0.0"
+

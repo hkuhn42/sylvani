@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: sylvani maryTTS plugin
+Bundle-SymbolicName: org.sylvani.mary;singleton:=true
+Bundle-Vendor: HACK
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.8
+Bundle-ClassPath: .,
+ lib/commons-io-2.4.jar,
+ lib/icu4j-54.1.1.jar,
+ lib/marytts-lang-de-5.1.2.jar,
+ lib/marytts-lang-en-5.1.2.jar,
+ lib/marytts-lang-fr-5.1.2.jar,
+ lib/marytts-lang-it-5.1.2.jar,
+ lib/marytts-lang-ru-5.1.2.jar,
+ lib/marytts-lang-sv-5.1.2.jar,
+ lib/marytts-lang-te-5.1.2.jar,
+ lib/marytts-lang-tr-5.1.2.jar,
+ lib/marytts-runtime-5.1.2-jar-with-dependencies.jar,
+ lib/voice-cmu-slt-hsmm-5.1.2.jar,
+ lib/voices/,
+ lib/voice-bits3-5.1.jar
+Import-Package: org.osgi.service.component,
+ org.slf4j
+Service-Component: OSGI-INF/*
+Export-Package: org.sylvani.mary
+Require-Bundle: org.sylvani.io;bundle-version="2.0.0"
+

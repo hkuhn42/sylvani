@@ -1,0 +1,6 @@
+- find speakers and mics [channels of things] -> new channel types button (for doorbell, speaker and micro)
+- send data to speakers   via events?
+- receive data from mics  via events?
+- streaming and storing  -> defining sources and drains?
+
+the actual data should be kept from memory as much as possible

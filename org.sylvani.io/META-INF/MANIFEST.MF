@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: io voice
+Bundle-SymbolicName: org.sylvani.io;singleton:=true
+Bundle-Vendor: sylvani io plugin
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .,
+ lib/commons-io-2.4.jar
+Import-Package: com.eclipsesource.jaxrs.provider.gson,
+ com.google.common.collect,
+ org.eclipse.emf.common.util,
+ org.eclipse.smarthome.config.core,
+ org.eclipse.smarthome.core.common.registry,
+ org.eclipse.smarthome.core.library.types,
+ org.eclipse.smarthome.core.thing,
+ org.eclipse.smarthome.core.thing.binding,
+ org.eclipse.smarthome.core.thing.type,
+ org.eclipse.smarthome.core.thing.util,
+ org.eclipse.smarthome.core.types,
+ org.eclipse.smarthome.model.items,
+ org.eclipse.smarthome.model.sitemap,
+ org.eclipse.smarthome.model.sitemap.impl,
+ org.eclipse.smarthome.model.sitemap.util,
+ org.eclipse.smarthome.ui.items,
+ org.osgi.service.component,
+ org.osgi.service.http,
+ org.slf4j
+Service-Component: OSGI-INF/*
+Export-Package: org.sylvani.audio,
+ org.sylvani.io,
+ org.sylvani.io.audio.impl,
+ org.sylvani.io.event,
+ org.sylvani.io.interpreter,
+ org.sylvani.io.voice,
+ org.sylvani.io.voice.http
+Require-Bundle: javax.servlet,
+ com.eclipsesource.jaxrs.jersey-all;bundle-version="2.22.1",
+ org.eclipse.smarthome.core;bundle-version="0.8.0",
+ org.eclipse.equinox.event;bundle-version="1.3.100"
+

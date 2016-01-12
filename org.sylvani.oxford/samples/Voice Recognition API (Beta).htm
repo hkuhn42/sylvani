@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Microsoft Project Oxford Microsoft Bing Voice Recognition API (Beta)</title>
+    <link href="Voice%20Recognition%20API%20%28Beta%29-Dateien/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="Voice%20Recognition%20API%20%28Beta%29-Dateien/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/latest_002.css">
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/latest_005.css">
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/latest_004.css">
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/latest.css">
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/latest_003.css">
+
+    <script src="Voice%20Recognition%20API%20%28Beta%29-Dateien/ko.js" type="text/javascript"></script>
+    <script src="Voice%20Recognition%20API%20%28Beta%29-Dateien/jquery-1.js" type="text/javascript"></script>
+
+    <!--[if lt IE 9]>
+    <script src="/Content/Themes/Portals.Themes.Bootstrap/scripts/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/Content/Themes/Portals.Themes.Bootstrap/scripts/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="Voice%20Recognition%20API%20%28Beta%29-Dateien/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/extension.css">
+    <link href="Voice%20Recognition%20API%20%28Beta%29-Dateien/bright.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+            body, .ed_normal { font-family: "wf_segoe-ui_normal","Segoe UI","Segoe WP","Tahoma","Arial","sans-serif"; }
+            h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: "wf_segoe-ui_light","Segoe UI Light","Segoe WP Light","Segoe UI","Segoe WP","Tahoma","Arial","sans-serif"; }
+            .ed_lighter { font-family: "wf_segoe-ui_light","Segoe UI Light","Segoe WP Light","Segoe UI","Segoe WP","Tahoma","Arial","sans-serif"; }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="Voice%20Recognition%20API%20%28Beta%29-Dateien/custommenu.css">
+    <style type="text/css">
+        .zone-aside-first
+        {
+            padding: 0;
+        }
+    </style>
+    
+    <style type="text/css">
+        .MsoTableGrid pre
+        {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .ed_r_link
+        {
+            display: block;
+        }
+        .ed_r_img
+        {
+            max-width: 50em;
+            display: block;
+        }   
+    </style>
+    
+    <style type="text/css">
+        table th, table td { padding: 10px; border:1px solid #000; }
+        .listNone li { list-style:none; }
+        .statusCode { color: #3e9bb6; }
+
+        .langTable td { width: 200px; overflow:hidden; }
+            .langTable td:before { margin: 0 15px 0 20px; content:"."; display:inline-block; width: 6px; height:6px; text-indent: -10em; vertical-align:middle; background-color: #000; border-radius: 3px; }
+    </style>
+
+</head>
+<body>
+
+
+<h2>Microsoft Bing Voice Recognition API (Beta)</h2>
+
+<section>
+    <p>
+        © 2014 Microsoft. All rights reserved. 
+    </p>
+    <p>
+        This document is provided “as-is”. 
+        Information and views expressed in this document, including URL 
+and other Internet Web site references, may change without notice. 
+    </p>
+    <p>
+        Some examples depicted herein are provided for illustration only and are fictitious.  
+        No real association or connection is intended or should be inferred.
+    </p>
+    <p>
+        This document does not provide you with any legal rights to any 
+intellectual property in any Microsoft product. 
+        You may copy and use this document for your internal, reference 
+purposes. This document is confidential and proprietary to Microsoft. 
+        It is disclosed and can be used only pursuant to a 
+non-disclosure agreement.
+    </p>
+</section>
+
+<section>
+    <h3>Contents</h3>
+    <ul>
+        <li>
+            <a href="#Introduction">Introduction</a>
+        </li>
+        <li>
+            <a href="#VoiceRecognitionRequest">Voice Recognition Request</a>
+            <ul>
+                <li>
+                    <a href="#HTTPHeaders">HTTP Headers</a>
+                </li>
+                <li>
+                    <a href="#InputParameters">Input Parameters</a>
+                </li>
+                <li>
+                    <a href="#RequiredParameters">Required Parameters</a>
+                </li>
+                <li>
+                    <a href="#OptionalParameters">Optional Parameters</a>
+                </li>
+                <li>
+                    <a href="#SampleVoiceRecognitionRequest">Sample Voice Recognition Request</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#VoiceRecognitionResponses">Voice Recognition Responses</a>
+            <ul>
+                <li>
+                    <a href="#NormalResponse">Normal Response</a>
+                    <ul>
+                        <li>
+                            <a href="#Schema1">Schema</a>
+                        </li>
+                        <li>
+                            <a href="#Schema2">Schema</a>
+                        </li>
+                        <li>
+                            <a href="#SucccessfulRecognitionResponse">Succcessful Recognition Response</a>
+                        </li>
+                        <li>
+                            <a href="#RecognitionFailure">Recognition Failure</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#ErrorResponses">Error Responses</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#SupportedLocales">Supported Locales</a>
+        </li>
+        <li>
+            <a href="#TroubleshootingandSupport">Troubleshooting and Support</a>
+        </li>
+    </ul>
+</section>
+
+<section id="Introduction">
+    <h3>Introduction</h3>
+    <p>
+        This document describes the Bing Voice APIs that exposes an HTTP
+ interface that enables you to transcribe and synthesize voice queries. 
+The Bing Voice APIs may be used in many different contexts that need 
+cloud-based voice recognition and synthesis capabilities. 
+    </p>
+</section>
+
+<section id="VoiceRecognitionRequest">
+    <h3>Voice Recognition Request</h3>
+    <p>
+        Clients must use the following end-point to access the service and build voice enabled application: 
+        <a href="https://speech.platform.bing.com/recognize">https://speech.platform.bing.com/recognize</a>
+    </p>
+    <p>
+        The API uses HTTP POST to upload audio. 
+        The API supports <a href="http://tools.ietf.org/html/rfc4463#sec3.6.1">Chunked Transfer-Encoding</a>
+ for efficient audio streaming. 
+        For live transcription scenarios, we recommend you use chunked 
+transfer encoding to stream the audio to the service while the user is 
+speaking. 
+        Other implementations result in higher user-perceived latency.
+    </p>
+
+    <p>
+        Your application must endpoint the audio to determine start and 
+end of speech. The endpoints specify to the service the start and end of
+ the request. You may not upload more than 10 seconds of audio in any 
+one request and the total request duration cannot exceed 14 seconds.
+    </p>
+
+    <section id="HTTPHeaders">
+        <h4>HTTP Headers</h4>
+        <p>
+            The value of the Content-Type header specifies the audio 
+format being uploaded. The value is a semicolon-separated list of 
+key/value pairs that describe the audio data. For example:
+        </p>
+        <p>
+            audio/wav; codec=”audio/wav”; samplerate=16000; sourcerate=8000; trustsourcerate=false
+        </p>
+        <p>
+            The Voice API supports audio/wav using the following codecs:
+        </p>
+        <ul>
+            <li>PCM single channel</li>
+            <li>Siren</li>
+            <li>SirenSR</li>
+        </ul>
+        <p>
+            The required <strong>samplerate</strong> is the rate at which the audio data was encoded. 
+            Valid values are 8000 and 16000. 
+            This should match the value of the samplerate in the RIFF header.
+        </p>
+        <p>
+            The optional <strong>sourcerate</strong> is rate at which 
+the source data was recorded. The sourcerate value, if specified, must 
+to be greater than 0. The sourcerate defaults to 8000.
+        </p>
+        <p>
+            The optional <strong>trustsourcerate</strong> is an assertion by the client as to the validity of the sourcerate. 
+            If <strong>trustsourcerate</strong>=true, the audio data has been under the continuous control of the client and the <strong>sourcerate</strong> is correct. 
+            If <strong>trustsourcerate</strong>=false, the audio data has an unknown history and the <strong>sourcerate</strong> may or may not be correct. 
+        </p>
+        <p>
+            The combination of the <strong>sourcerate</strong> and the <strong>samplerate</strong> are used to select the appropriate acoustic model. 
+            If the <strong>trustsourcerate</strong> value if specified and set to false, the sourcerate value is not used in the determination of the appropriate acoustic model.
+        </p>
+    </section>
+
+    <section id="InputParameters">
+        <h4>Input Parameters</h4>
+        <p>
+            Inputs to the Bing Voice APIs are expressed as HTTP query 
+parameters. 
+            Parameters in the POST body are treated as audio content. 
+The following is a complete list of recognized input parameters. 
+            Unsafe characters should be escaped following the W3C URL 
+spec (<a href="http://www.w3.org/Addressing/URL/url-spec.txt">http://www.w3.org/Addressing/URL/url-spec.txt</a>). 
+            A request with more than one instance of any parameter will result in an error response (HTTP 400).
+        </p>
+    </section>
+
+    <section id="RequiredParameters">
+        <h4>Required Parameters</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:100px;">Name</th>
+                    <th style="width:100px;">Format</th>
+                    <th style="width:450px;">Description, Example &amp; Use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Version</td>
+                    <td>Digits and "."</td>
+                    <td>
+                        <p>
+                            The API version being used by the client. The required value is 3.0
+                        </p>
+                        <p>
+                            <strong>Example:</strong>version=3.0
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>requestid</td>
+                    <td>GUID</td>
+                    <td>
+                        <p>A globally unique identifier generated by the client for this request.</p>
+                        <p><strong>Example:</strong>requestid=b2c95ede-97eb-4c88-81e4-80f32d6aee54</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>appID</td>
+                    <td>GUID</td>
+                    <td>
+                        <p>
+                            A globally unique identifier used for this application. 
+                            Always use appID = D4D52672-91D7-4C74-8AD8-42B1D98141A5. 
+                            Do Not Generate a new GUID. It is unsupported.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>format</td>
+                    <td>UTF-8</td>
+                    <td>
+                        <p>
+                            Specifies the desired format of the returned data. The required value is JSON .
+                        </p>
+                        <p><strong>Example:</strong>format=json</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>locale</td>
+                    <td>UTF-8 (IETF Language Tag)</td>
+                    <td>
+                        <p>
+                            Language code of the audio content in IETF RFC 5646. Case does not matter.
+                        </p>
+                        <p>
+                            <strong>Example:</strong>locale=en-US.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>device.os</td>
+                    <td>UTF-8</td>
+                    <td>
+                        <p>
+                            Operating system the client is running on. 
+                            This is an open field but we encourage 
+clients to use be consistent across devices and applications. 
+                            Suggested values:
+                        </p>
+                        <ul>
+                            <li>Windows OS</li>
+                            <li>Windows Phone OS</li>
+                            <li>Xbox</li>
+                            <li>Android</li>
+                            <li>iPhone OS</li>
+                        </ul>
+                        <p>
+                            <strong>Example:</strong>device.os=Windows Phone OS
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>scenarios</td>
+                    <td>UTF-8</td>
+                    <td>
+                        <p>The context for performing a recognition. The supported values are:</p>
+                        <ul>
+                            <li>ulm</li>
+                            <li>websearch</li>
+                        </ul>
+                        <p>
+                            <strong>Example1:</strong>scenarios=ulm
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>instanceid</td>
+                    <td>GUID</td>
+                    <td>
+                        <p>A globally unique device identifier of the device making the request.</p>
+                        <p>
+                            <strong>Example:</strong>instanceid=b2c95ede-97eb-4c88-81e4-80f32d6aee5
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h4 id="OptionalParameters">Optional Parameters</h4>
+        <p>
+            Note that all the values here are used either for performing the request or operationally to manage the service.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:150px;">Name</th>
+                    <th style="width:100px;">Format</th>
+                    <th style="width:400px;">Description and Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>maxnbest</td>
+                    <td>Integer</td>
+                    <td>
+                        <p>
+                            Maximum number of results the voice 
+application API should return. The default is 1. The maximum is 5.
+                        </p>
+                        <p>
+                            <strong>Example:</strong>maxnbest=3
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>result.profanitymarkup</td>
+                    <td>0/1</td>
+                    <td>
+                        <p>
+                            Scan the result text for words in an offensive word list. If found, the word will be delimited by <profanity>bad word</profanity> tag. 
+                        </p>
+                        <p>
+                            <strong>Example:</strong>result.profanity=1
+                        </p>
+                        <p>
+                            0 means off, 1 means on, default is 1.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="SampleVoiceRecognitionRequest">
+        <h4>Sample Voice Recognition Request</h4>
+        <p>
+            The following is an example of a voice search request where 
+the audio is supplied as a part of a recognition request:
+        </p>
+        <pre>POST /query? scenarios=catsearch&amp;appid=f84e364c-ec34-4773-a783-73707bd9a585&amp;locale=en-US&amp;device.os=wp7&amp;version=3.0&amp;format=xml&amp;requestid=1d4b6030-9099-11e0-91e4-0800200c9a66&amp;instanceid=1d4b6030-9099-11e0-91e4-0800200c9a66 HTTP/1.1
+Host: speech.platform.bing.com/recognize/query
+Content-Type: audio/wav; samplerate=8000
+
+<em>(audio data)</em>
+        </pre>
+    </section>
+</section>
+
+<section id="VoiceRecognitionResponses">
+    <h3>Voice Recognition Responses</h3>
+    <p>
+        The API response is returned in JSON format. 
+        The value of the “name” tag has the post-inverse text normalization result; 
+        the value of the “lexical” tag has the pre-inverse text normalization result.
+    </p>
+
+    <section id="NormalResponse">
+        <h4>Normal Response</h4>
+
+        <section id="Schema1">
+            <h5>Schema</h5>
+            <p>
+                Schema Legend:
+            </p>
+            <ul>
+                <li>&lt; .. &gt; means optional7</li>
+                <li>[ ] represents a json array</li>
+                <li>{ } represents a json object</li>
+                <li>* indicates that the object can be defined multiple times</li>
+            </ul>
+            <ul style="padding-left: 0;" class="listNone">
+                <li>
+                    <dfn><strong>JSON-text : </strong>version header &lt;results&gt;</dfn>
+                     // result must be always and only present when status = “success”
+                </li>
+                <li>
+                    <dfn><strong>version : </strong>string</dfn>
+                    // The API version “3.0” – the value the client 
+passed and consequently the API version that serviced the request.
+                </li>
+                <li>
+                    <dfn><strong>header : </strong>{ status scenario &lt;name&gt; &lt;lexical&gt; properties } </dfn>
+                    // name and lexical are always and only present in the case of “status” = “success”
+                    <ul>
+                        <li>
+                            <dfn><strong>status : </strong> “success” / “error” / “false reco”</dfn>
+                            // ‘false reco’ is returned only for 2.0 
+responses when NOSPEECH OR FALSERECO is 1. This is done to maintain 
+backward compatibility.
+                        </li>
+                        <li>
+                            <dfn><strong>scenario : </strong>string</dfn>
+                            the scenario this recognition result came from.
+                        </li>
+                        <li>
+                            <dfn><strong>name : </strong>string</dfn>
+                            // formatted recognition result. Profane terms are surrounded with &lt;profanity&gt; tags.
+                        </li>
+                        <li>
+                            <dfn><strong>lexical : </strong>string</dfn>
+                            // text of what was spoken. Profane terms are surrounded with &lt;profanity&gt; tags.
+                        </li>
+                        <li>
+                            <dfn><strong>properties : </strong>{ requestid &lt;NOSPEECH&gt; &lt;FALSERECO&gt; &lt;HIGHCONF&gt; &lt;ERROR&gt; }</dfn>
+                            <ul>
+                                <li>
+                                    <dfn><strong>requestid : </strong>string</dfn>
+                                    // this is a uuid identifying the 
+requestid to be sent with the associated logs. 
+                                    It should be used as the 
+“server.requestid” parameter value in the subsequent logging API 
+request.
+                                </li>
+                                <li>
+                                    <dfn><strong>NOSPEECH : </strong>1</dfn>
+                                    // set when no speech was detected on the sent audio
+                                </li>
+                                <li>
+                                    <dfn><strong>FALSERECO : </strong>1</dfn>
+                                     // set when no matches were found for the sent audio. 
+                                </li>
+                                <li>
+                                    <dfn><strong>HIGHCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of high-confidence
+                                </li>
+                                <li>
+                                    <dfn><strong>MIDCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of medium-confidence
+                                </li>
+                                <li>
+                                    <dfn><strong>LOWCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of low-confidence
+                                </li>
+                                <li>
+                                    <dfn><strong>ERROR : </strong>1</dfn>
+                                    // set when there was an error generating a response
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>results : </strong> [ { scenario name lexical confidence pronunciation tokens }* ] </dfn>
+                    // n-best list of results ordered by confidence
+                    <ul>
+                        <li>
+                            <dfn><strong>scenario : </strong>string</dfn>
+                            // the scenario this recognition result came from.
+                        </li>
+                        <li>
+                            <dfn><strong>name : </strong>string</dfn>
+                            // formatted recognition result. Profane terms are surrounded with &lt;profanity&gt; tags.
+                        </li>
+                        <li>
+                            <dfn><strong>lexical : </strong>string</dfn>
+                            // text of what was spoken. Profane terms are surrounded with &lt;profanity&gt; tags.
+                        </li>
+                        <li>
+                            <dfn><strong>confidence : </strong>float</dfn>
+                            // floating point number indicating the 
+result confidence (from 0.0 to 1.0 with 1.0 being the maximum confidence
+ level. Example: 0.876534)
+                        </li>
+                        <li>
+                            <dfn><strong>properties : </strong>{ &lt; HIGHCONF &gt; }</dfn>
+                            <ul>
+                                <li>
+                                    <dfn><strong>HIGHCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of high-confidence
+                                </li>
+                                <li>
+                                    <dfn><strong>MIDCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of medium-confidence
+                                </li>
+                                <li>
+                                    <dfn><strong>LOWCONF : </strong>1</dfn>
+                                    // set when the header result is determined to be of low-confidence
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="Schema2">
+            <h5>Schema</h5>
+            <ul style="padding-left:0;" class="listNone">
+                <li>
+                    <dfn><strong>speechbox-root : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>version, header, results
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>version : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, The API version "3.0"
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>header : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>status, name, lexical, properties
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>status : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, "success" or "error"
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>scenario : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, the scenario parameter value.
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>name : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, formatted recognition result
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>lexical : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, text of what was spoken
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>properties : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>property
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>property : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, the property value.
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>{ name: the property name }
+                        </li>
+                        <li>
+                            <dfn><strong>other information : </strong></dfn>
+                            <ul>
+                                <li>Properties based in the header have the following valid names: <em><strong>requestid, NOSPEECH, FALSERECO</strong></em>. </li>
+                                <li>Properties based in the result portion consist of only <em><strong>HIGHCONF</strong></em>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <dfn><strong>valid property values : </strong></dfn>
+                            <ul>
+                                <li>requestid : a valid GUID string</li>
+                                <li>NOSPEECH : “1” to indicate a no speech false recognition.</li>
+                                <li>FALSERECO : “1” to indicate that there were no interpretations</li>
+                                <li>HIGHCONF : “1” to indicate high confidence (currently above .5 threshold)</li>
+                                <li>MIDCONF : “1” to indicate medium-confidence</li>
+                                <li>LOWCONF : “1” to indicate low-confidence</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>results : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>result
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>result : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>name, lexical, confidence, tokens
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>confidence : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>float, indicates result confidence
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>tokens : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>token
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>token : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>name, lexical, pronunciation
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <dfn><strong>pronunciation : </strong></dfn>
+                    <ul>
+                        <li>
+                            <dfn><strong>child tags : </strong></dfn>none
+                        </li>
+                        <li>
+                            <dfn><strong>value : </strong></dfn>string, The IPA pronunciation of this token.
+                        </li>
+                        <li>
+                            <dfn><strong>attributes : </strong></dfn>none
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="SucccessfulRecognitionResponse">
+            <h5>Succcessful Recognition Response</h5>
+            <p>
+                Sample JSON response for a successful voice search. The 
+comments/formatting of the JSON below is for stylistic / example reasons
+ only, and that the real result will omit indentation spaces/smart 
+quotes/comments, etc.
+            </p>
+            <pre>HTTP/1.1 200 OK
+Content-Length: XXX
+Content-Type: application/json; charset=UTF-8
+{
+  # Response version
+  "version":"3.0", 
+  "header":{
+    "status":"success",
+    "scenario":"websearch",
+    "name":"Mc Dermant Autos",
+    “lexical”:”mac dermant autos”,
+    "properties":{
+      "requestid":"ABDDD97E-171F-4B75-A491-A977027B0BC3"
+    },
+  "results":[{
+    # Formatted result
+    "name":"Mc Dermant Autos",
+    # The text of what was spoken
+    “lexical”:”mac dermant autos”,
+    "confidence":"0.9442599",
+    # Words that make up the result; a word can include a space if there
+    # isn’t supposed to be a pause between words when speaking them
+    "tokens":[{ 
+      # The text in the grammar that matched what was spoken for this token
+      "token":"mc dermant", 
+      # The text of what was spoken for this token
+      “lexical”:”mac dermant”,
+      # The IPA pronunciation of this token (I made up M AC DIR MANT; 
+      # refer to a real IPA spec for the text of an actual pronunciation)
+      “pronunciation”:”M AC DIR MANT”,
+    },
+    {
+      "token":"autos",
+      “lexical”:”autos”,
+      “pronunciation”:”OW TOS”,
+    }],
+    “properties”:{
+      “HIGHCONF”:”1”
+    },
+  }],
+  }
+}
+            </pre>
+            <pre>&lt;/speechbox-root&gt;</pre>
+        </section>
+
+        <section id="RecognitionFailure">
+            <h5>Recognition Failure</h5>
+            <p>
+                Sample JSON response for a voice search query where the user’s utterance could not be recognized.
+            </p>
+            <pre>HTTP/1.1 200 OK
+Content-Length: XXX
+Content-Type: application/json; charset=UTF-8
+
+{
+   "version":"3.0",
+   "results":[{}],
+   “header”:{
+     "status":"error",
+     "scenario":"websearch",
+     "properties":{
+"requestid":"ABDDD97E-171F-4B75-A491-A977027B0BC3",
+       "FALSERECO":"1"
+     }
+   }
+}
+            </pre>
+        </section>
+    </section>
+
+    <section id="ErrorResponses">
+        <h4>Error Responses</h4>
+        <p>
+            <span class="statusCode">HttpStatusCode</span> BadRequest 
+400: will be returned if a required parameter is missing, empty or null,
+ or if the value passed to either a required or optional parameter is 
+invalid. “Invalid” includes passing a string value longer than the 
+allowed length. A brief description of which parameter was the problem 
+is included.
+        </p>
+        <p>
+            <span class="statusCode">HttpStatusCode</span> Unauthorized 401: will be returned if the request is not authorized
+        </p>
+        <p>
+            <span class="statusCode">HttpStatusCode</span> BadGateway 502: will be returned when the service was unable to perform the recognition.
+        </p>
+        <p>
+            Sample response for a voice search request submitted with a 
+bad parameter.  This is the response format of errors regardless of what
+ format the user has requested.
+        </p>
+        <pre>HTTP/1.0 400 Bad Request
+Content-Length: XXX
+Content-Type: text/plain; charset=UTF-8
+
+Invalid lat parameter specified
+        </pre>
+    </section>
+</section>
+
+<section id="SupportedLocales">
+    <h3>Supported Locales</h3>
+    <p>The supported locales are:</p>
+    <table class="langTable">
+        <tbody>
+            <tr>
+                <td>de-DE</td>
+                <td>zh-TW</td>
+            </tr>
+            <tr>
+                <td>es-ES</td>
+                <td>ja-JP</td>
+            </tr>
+            <tr>
+                <td>en-GB</td>
+                <td>en-IN</td>
+            </tr>
+            <tr>
+                <td>en-US</td>
+                <td>pt-BR</td>
+            </tr>
+            <tr>
+                <td>fr-FR</td>
+                <td>ko-KR</td>
+            </tr>
+            <tr>
+                <td>it-IT</td>
+                <td>fr-CA</td>
+            </tr>
+            <tr>
+                <td>zh-CN</td>
+                <td>en-AU</td>
+            </tr>
+            <tr>
+                <td>zh-HK</td>
+                <td>es-MX</td>
+            </tr>
+            <tr>
+                <td>ru-RU</td>
+                <td>en-CA</td>
+            </tr>
+            <tr>
+                <td>ar-EG<span class="remarkMessage">*</span></td>
+                <td>ca-ES</td>
+            </tr>
+            <tr>
+                <td>da-DK</td>
+                <td>en-NZ</td>
+            </tr>
+            <tr>
+                <td>fi-FI</td>
+                <td>nb-NO</td>
+            </tr>
+            <tr>
+                <td>nl-NL</td>
+                <td>pl-PL</td>
+            </tr>
+            <tr>
+                <td>pt-PT</td>
+                <td>sv-SE</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <span class="remarkMessage">*</span>ar-EG supports Modern Standard Arabic (MSA)
+    </p>
+</section>
+
+<section id="TroubleshootingandSupport">
+    <h3>Troubleshooting and Support</h3>
+    <p>
+        Post all questions and issues to the <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService">Bing Speech Service</a> MSDN Forum, with complete detail, such as:
+    </p>
+    <ul>
+        <li>An example full request string (minus the raw audio data)</li>
+        <li>If applicable, the full output of a failed request, which includes log IDs</li>
+        <li>The percentage of requests that are failing</li>
+    </ul>
+</section>
+
+                    </article>
+                </main>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+        <div class="layout-row">
+            <div class="zone-footer layout">
+                <footer role="contentinfo">
+                    <ul class="aboutLink">
+                        <li>
+                            <a href="https://support.microsoft.com/contactus/?ws=mscom">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="http://go.microsoft.com/fwlink/?LinkId=521839">Privacy &amp; cookies</a>
+                        </li>
+                        <li>
+                            <a href="https://go.microsoft.com/fwlink/?LinkID=206977">Terms of use</a>
+                        </li>
+                        <li>
+                            <a href="http://go.microsoft.com/fwlink/?LinkId=698895">Developer code of conduct</a>
+                        </li>
+                        <li>
+                            <a href="https://go.microsoft.com/?linkid=9851308">Trademarks</a>
+                        </li>
+                        <li>
+                            <a href="mailto:oxfordsup@microsoft.com?subject=Project%20Oxford%20Service%20or%20Application%20Abuse%20Reporting">Report abuse</a>
+                        </li>
+                        <li>
+                            <a href="https://www.projectoxford.ai/News">News</a>
+                        </li>
+                        <li>
+                                <a href="https://cn.projectoxford.ai/">中文</a>
+                        </li>
+                    </ul>
+                    <p class="copyright">© 2015 Microsoft</p>
+                </footer>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body></html>
