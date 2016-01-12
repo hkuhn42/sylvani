@@ -23,7 +23,7 @@ public class DummyRecognitionService implements IRecognitionService {
      */
     @Override
     public String recognize(AudioSource audio, Locale locale) throws Exception {
-        IOUtils.copy(audio.getInputStream(), new FileOutputStream("c:/temp/newData.wav"));
+        IOUtils.copy(audio.getInputStream(null), new FileOutputStream("c:/temp/newData.wav"));
         return "turn the light on";
     }
 

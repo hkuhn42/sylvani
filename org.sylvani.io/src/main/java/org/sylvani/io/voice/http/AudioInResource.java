@@ -66,7 +66,7 @@ public class AudioInResource {
             } else {
                 AudioSource response = context.getSyntheziserService().synthesize("error", locale, "default",
                         new AudioFormat());
-                return IOUtils.toByteArray(response.getInputStream());
+                return IOUtils.toByteArray(response.getInputStream(null));
             }
 
         } catch (Exception e) {

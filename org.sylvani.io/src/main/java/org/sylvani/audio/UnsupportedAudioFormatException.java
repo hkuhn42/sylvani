@@ -4,8 +4,8 @@
 package org.sylvani.audio;
 
 /**
- *
- *
+ * Thrown when a requested format is not supported by a audio source or audiooutput implementation
+ * 
  * @author hkuhn
  */
 public class UnsupportedAudioFormatException extends AudioException {

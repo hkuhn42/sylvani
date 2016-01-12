@@ -4,7 +4,7 @@
 package org.sylvani.audio;
 
 /**
- *
+ * General purpose audio exception
  *
  * @author hkuhn
  */

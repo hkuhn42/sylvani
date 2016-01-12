@@ -19,14 +19,17 @@ import org.eclipse.smarthome.model.sitemap.SitemapProvider;
 import org.eclipse.smarthome.ui.items.ItemUIRegistry;
 
 /**
+ * Dummy version of an ICommandInterpreter
+ *
+ * HAL9000 -> 2001
+ * Vincent -> DAs Schwarze Loch
+ * Kitt -> Night Rider
+ *
+ * TODO: take a look at RuleEngineImpl
+ * move to new plugin
+ *
+ *
  * @author hkuhn
- *         HAL9000 -> 2001
- *         Vincent -> DAs Schwarze Loch
- *         Kitt -> Night Rider
- *
- *         TODO: take a look at RuleEngineImpl
- *
- *
  */
 public class HAL9000 implements ICommandInterpreter {
 

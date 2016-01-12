@@ -31,19 +31,21 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
 
     private byte[] data;
     private AudioFormat format;
+    private String name;
 
     public AudioClip() {
-        this(null, null);
+        this(null, null, null);
     }
 
     public AudioClip(byte[] data) {
-        this(data, null);
+        this(null, data, null);
     }
 
-    public AudioClip(byte[] data, AudioFormat format) {
+    public AudioClip(String name, byte[] data, AudioFormat format) {
         super();
         this.data = data;
         this.format = format;
+        this.name = name;
     }
 
     public byte[] getData() {
@@ -58,7 +60,6 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
         this.format = format;
     }
 
-    @Override
     public OutputStream getOutputStream() {
         return new ByteArrayOutputStream() {
             @Override
@@ -69,7 +70,6 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
         };
     }
 
-    @Override
     public InputStream getInputStream() {
         return new ByteArrayInputStream(data);
     }
@@ -77,12 +77,12 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
     @Override
     public OutputStream getOutputStream(AudioFormat format) throws UnsupportedAudioFormatException {
         setFormat(format);
-        return getOutputStream();
+        return getOutputStream(format);
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
