@@ -60,6 +60,7 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
         this.format = format;
     }
 
+    @Override
     public OutputStream getOutputStream() {
         return new ByteArrayOutputStream() {
             @Override
@@ -70,6 +71,7 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
         };
     }
 
+    @Override
     public InputStream getInputStream() {
         return new ByteArrayInputStream(data);
     }
@@ -93,7 +95,7 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
 
     @Override
     public InputStream getInputStream(AudioFormat requestedFormat) throws UnsupportedAudioFormatException {
-        if (requestedFormat.equals(format)) {
+        if (format == null || format.equals(requestedFormat)) {
             return getInputStream();
         }
         throw new UnsupportedAudioFormatException(format + " is not supported", requestedFormat);
