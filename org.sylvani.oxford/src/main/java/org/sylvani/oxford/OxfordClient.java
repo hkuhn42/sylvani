@@ -111,7 +111,7 @@ public class OxfordClient {
         // create a new client proxy for the BooksResource
         IOxfordSpeechAPI oxfordCloud = WebResourceFactory.newResource(IOxfordSpeechAPI.class, target);
 
-        String host = "speech.platform.bing.com/synthezie";
+        String host = "speech.platform.bing.com/synthesize";
 
         String appId = "D4D5267291D74C748AD842B1D98141A5";
         String clientId = "1596c1ab00c840be8406cf815d0441ce";
