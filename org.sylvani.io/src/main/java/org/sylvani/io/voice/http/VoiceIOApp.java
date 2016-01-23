@@ -25,6 +25,7 @@ import org.osgi.service.http.NamespaceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sylvani.io.VoiceControlContext;
+import org.sylvani.io.event.AbstractAudioEvent;
 import org.sylvani.io.interpreter.ICommandInterpreter;
 import org.sylvani.io.voice.IRecognitionService;
 import org.sylvani.io.voice.ISyntheziserService;
@@ -125,6 +126,10 @@ public class VoiceIOApp implements EventSubscriber {
 
     @Override
     public void receive(Event event) {
-        logger.info(event.toString());
+        logger.info(event.toString() + " (" + event.getClass() + " " + event.getSource() + " " + event.getPayload()
+                + " " + event.getTopic() + " " + event.getTopic());
+        if (event instanceof AbstractAudioEvent) {
+
+        }
     }
 }

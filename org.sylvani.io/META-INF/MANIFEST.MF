@@ -26,9 +26,11 @@ Import-Package: com.eclipsesource.jaxrs.provider.gson,
  org.osgi.service.component,
  org.osgi.service.http,
  org.slf4j
-Service-Component: OSGI-INF/*
+Service-Component: OSGI-INF/*,
+ OSGI-INF/audioContext.xml
 Export-Package: org.sylvani.audio,
  org.sylvani.io,
+ org.sylvani.io.audio,
  org.sylvani.io.audio.impl,
  org.sylvani.io.event,
  org.sylvani.io.interpreter,

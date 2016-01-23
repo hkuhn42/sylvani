@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.sylvani.io.audio.AudioContext">
+   <implementation class="org.sylvani.io.audio.AudioContextImpl"/>
+   <service>
+      <provide interface="org.sylvani.io.audio.AudioContext"/>
+   </service>
+</scr:component>

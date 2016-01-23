@@ -43,4 +43,11 @@ public interface AudioSource {
      */
     public InputStream getInputStream(AudioFormat format) throws AudioException;
 
+    /**
+     * load data into
+     *
+     * @param output
+     * @throws AudioException
+     */
+    public void stream(AudioOutput output) throws AudioException;
 }

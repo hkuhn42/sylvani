@@ -15,5 +15,6 @@
    <service>
       <provide interface="org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory"/>
    </service>
+   <reference bind="setAudioContext" cardinality="1..1" interface="org.sylvani.io.audio.AudioContext" name="AudioContext" policy="static" unbind="unsetAudioContext"/>
 
 </scr:component>

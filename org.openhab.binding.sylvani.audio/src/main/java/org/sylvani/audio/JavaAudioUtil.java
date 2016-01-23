@@ -27,49 +27,58 @@ public class JavaAudioUtil {
 
             Mixer m = AudioSystem.getMixer(mixerInfo);
 
-            Line.Info[] lines = m.getSourceLineInfo();
-            for (Line.Info li : lines) {
-                if (li.getLineClass() == SourceDataLine.class) {
+            addSourceLines(details, m);
 
-                    try {
-                        m.open();
-                        // System.out.println(" -: " + li + "|" + m.getMixerInfo().getName() + ";"
-                        // + m.getMixerInfo().getVendor() + ";" + m.getMixerInfo().getVersion());
-                        logger.debug("<" + m.getMixerInfo().getName());
-                        details.addOutput(mixerInfo);
-                        m.close();
-
-                    } catch (LineUnavailableException e) {
-                        System.out.println("Line unavailable.");
-                    }
-                }
-            }
-
-            lines = m.getTargetLineInfo();
-
-            for (Line.Info li : lines) {
-                if (li.getLineClass() == TargetDataLine.class) {
-
-                    try {
-                        m.open();
-                        // System.out.println(" -: " + li + "|" + m.getMixerInfo().getName() + ";"
-                        // + m.getMixerInfo().getVendor() + ";" + m.getMixerInfo().getVersion());
-                        logger.debug(">" + m.getMixerInfo().getName());
-                        details.addInput(mixerInfo);
-                        m.close();
-
-                    } catch (LineUnavailableException e) {
-                        System.out.println("Line unavailable.");
-                    }
-                }
-
-            }
+            addTargetLines(details, m);
         }
         return details;
     }
 
-    public static String getIdForMixer(Mixer.Info info) {
-        return "M" + info.getName().hashCode();
+    protected void addSourceLines(AudioSystemDetails details, Mixer m) {
+        Line.Info[] lines = m.getSourceLineInfo();
+        for (Line.Info li : lines) {
+            if (li.getLineClass() == SourceDataLine.class) {
+
+                try {
+                    m.open();
+                    // System.out.println(" -: " + li + "|" + m.getMixerInfo().getName() + ";"
+                    // + m.getMixerInfo().getVendor() + ";" + m.getMixerInfo().getVersion());
+                    logger.debug("<" + m.getMixerInfo().getName());
+                    details.addOutput(m.getMixerInfo(), li);
+                    m.close();
+
+                } catch (LineUnavailableException e) {
+                    System.out.println("Line unavailable.");
+                }
+            }
+        }
+    }
+
+    protected void addTargetLines(AudioSystemDetails details, Mixer m) {
+        Line.Info[] lines;
+        lines = m.getTargetLineInfo();
+
+        for (Line.Info li : lines) {
+            if (li.getLineClass() == TargetDataLine.class) {
+
+                try {
+                    m.open();
+                    // System.out.println(" -: " + li + "|" + m.getMixerInfo().getName() + ";"
+                    // + m.getMixerInfo().getVendor() + ";" + m.getMixerInfo().getVersion());
+                    logger.debug(">" + m.getMixerInfo().getName());
+                    details.addInput(m.getMixerInfo(), li);
+                    m.close();
+
+                } catch (LineUnavailableException e) {
+                    System.out.println("Line unavailable.");
+                }
+            }
+
+        }
+    }
+
+    public static String getIdForMixer(Mixer.Info info, Line.Info lineInfo) {
+        return "M" + (info.getName() + lineInfo.getLineClass()).hashCode();
     }
 
     public static AudioFormat convert(javax.sound.sampled.AudioFormat soundFormat) {

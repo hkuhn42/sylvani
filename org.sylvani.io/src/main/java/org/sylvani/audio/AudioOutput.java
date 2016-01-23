@@ -42,4 +42,11 @@ public interface AudioOutput {
      */
     public OutputStream getOutputStream(AudioFormat format) throws AudioException;
 
+    /**
+     * Output audio from the povided source
+     * 
+     * @param source
+     * @throws AudioException
+     */
+    public void stream(AudioSource source) throws AudioException;
 }

@@ -6,14 +6,20 @@ package org.sylvani.audio.local;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.SourceDataLine;
 
+import org.sylvani.audio.AudioException;
 import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioOutput;
+import org.sylvani.audio.AudioSource;
 import org.sylvani.audio.JavaAudioUtil;
+import org.sylvani.audio.SourceLineInfo;
 import org.sylvani.audio.UnsupportedAudioFormatException;
+import org.sylvani.io.audio.impl.AudioUtil;
 
 /**
  * TODO:
@@ -24,6 +30,17 @@ import org.sylvani.audio.UnsupportedAudioFormatException;
 public class SourceDataLineAudioOutput implements AudioOutput {
     private SourceDataLine sourceDataLine;
     private Mixer.Info info;
+
+    public SourceDataLineAudioOutput(SourceLineInfo sourceLineInfo) throws AudioException {
+        try {
+            this.sourceDataLine = (SourceDataLine) AudioSystem.getLine(sourceLineInfo.getLineInfo());
+        } catch (LineUnavailableException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new AudioException(e);
+        }
+        this.info = sourceLineInfo.getMixerInfo();
+    }
 
     public SourceDataLineAudioOutput(SourceDataLine sourceDataLine, Mixer.Info info) {
         this.sourceDataLine = sourceDataLine;
@@ -70,5 +87,10 @@ public class SourceDataLineAudioOutput implements AudioOutput {
         public void write(byte[] b, int off, int len) throws IOException {
             sourceDataLine.write(b, off, len);
         }
+    }
+
+    @Override
+    public void stream(AudioSource source) throws AudioException {
+        AudioUtil.stream(source, this);
     }
 }

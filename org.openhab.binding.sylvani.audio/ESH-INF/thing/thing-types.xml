@@ -8,17 +8,21 @@
     <thing-type id="audioDevice">
         <label>Audio Device</label>
         <description>A audio device (currently only local)</description>
+        <channels>
+            <channel id="defaultSpeaker" typeId="speaker" />
+        </channels>
     </thing-type>
 
-    <!-- Sample Channel Type -->
+    <!-- Sample Channel Type 
     <channel-type id="microphone">
         <item-type>recorder</item-type>
         <label>Microphone</label>
         <description>Audio microphone</description>
     </channel-type>
+    -->
 
     <channel-type id="speaker">
-        <item-type>player</item-type>
+        <item-type>Player</item-type>
         <label>Speaker</label>
         <description>Audio speaker</description>
     </channel-type>

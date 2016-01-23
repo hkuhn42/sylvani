@@ -27,9 +27,9 @@ public class SylvaniAudioBindingConstants {
     public final static ThingTypeUID THING_TYPE_AUDIO_DEVICE = new ThingTypeUID(BINDING_ID, "audioDevice");
 
     // List of all Channel ids
-    public final static String CHANNEL_SPEAKER = "speaker";
+    public final static String CHANNEL_TYPE_SPEAKER = "speaker";
 
-    public final static String CHANNEL_MICROPHONE = "microphone";
+    public final static String CHANNEL_TYPE_MICROPHONE = "microphone";
 
     public final static Set<ThingTypeUID> SUPPORTED_DEVICE_THING_TYPES_UIDS = ImmutableSet.of(THING_TYPE_AUDIO_DEVICE);
 }

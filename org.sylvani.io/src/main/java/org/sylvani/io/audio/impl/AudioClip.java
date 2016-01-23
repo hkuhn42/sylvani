@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.sylvani.audio.AudioException;
 import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioOutput;
 import org.sylvani.audio.AudioSource;
@@ -99,6 +100,16 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
             return getInputStream();
         }
         throw new UnsupportedAudioFormatException(format + " is not supported", requestedFormat);
+    }
+
+    @Override
+    public void stream(AudioSource source) throws AudioException {
+        AudioUtil.stream(source, this);
+    }
+
+    @Override
+    public void stream(AudioOutput output) throws AudioException {
+        AudioUtil.stream(this, output);
     }
 
 }

@@ -17,7 +17,8 @@ Service-Component: OSGI-INF/*
 Export-Package: org.openhab.binding.sylvani.audio,
  org.openhab.binding.sylvani.audio.handler,
  org.openhab.binding.sylvani.audio.internal,
- org.sylvani.audio
+ org.sylvani.audio,
+ org.sylvani.audio.local
 Require-Bundle: org.eclipse.smarthome.core,
  org.eclipse.smarthome.config.discovery;bundle-version="0.8.0",
  org.eclipse.smarthome.core.thing;bundle-version="0.8.0",

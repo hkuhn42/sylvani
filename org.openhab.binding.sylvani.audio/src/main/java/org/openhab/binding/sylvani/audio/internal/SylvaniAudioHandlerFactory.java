@@ -17,6 +17,7 @@ import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.openhab.binding.sylvani.audio.handler.SylvaniAudioHandler;
+import org.sylvani.io.audio.AudioContext;
 
 /**
  * The {@link SylvaniAudioHandlerFactory} is responsible for creating things and thing
@@ -27,6 +28,8 @@ import org.openhab.binding.sylvani.audio.handler.SylvaniAudioHandler;
 public class SylvaniAudioHandlerFactory extends BaseThingHandlerFactory {
 
     private final static Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.singleton(THING_TYPE_AUDIO_DEVICE);
+
+    private AudioContext audioContext;
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
@@ -39,9 +42,17 @@ public class SylvaniAudioHandlerFactory extends BaseThingHandlerFactory {
         ThingTypeUID thingTypeUID = thing.getThingTypeUID();
 
         if (thingTypeUID.equals(THING_TYPE_AUDIO_DEVICE)) {
-            return new SylvaniAudioHandler(thing);
+            return new SylvaniAudioHandler(thing, audioContext);
         }
 
         return null;
+    }
+
+    public void setAudioContext(AudioContext audioContext) {
+        this.audioContext = audioContext;
+    }
+
+    public void unsetAudioContext(AudioContext audioContext) {
+        this.audioContext = null;
     }
 }

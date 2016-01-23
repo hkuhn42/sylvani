@@ -60,16 +60,25 @@ public class AudioInResource {
             e.printStackTrace();
         }
         try {
-            if ("ok".equalsIgnoreCase(textResponse)) {
-                byte[] response = IOUtils.toByteArray(this.getClass().getResourceAsStream("ok.wav"));
-                return response;
-            } else {
+
+            if (textResponse == null || "error".equalsIgnoreCase(textResponse)) {
                 AudioSource response = context.getSyntheziserService().synthesize("error", locale, "default",
                         new AudioFormat());
                 return IOUtils.toByteArray(response.getInputStream(null));
+            } else if ("ok".equalsIgnoreCase(textResponse)) {
+                byte[] response = IOUtils.toByteArray(this.getClass().getResourceAsStream("ok.wav"));
+                return response;
+            } else {
+                AudioSource response1 = context.getSyntheziserService().synthesize(textResponse, locale, "default",
+                        new AudioFormat());
+                return IOUtils.toByteArray(response1.getInputStream(null));
             }
 
-        } catch (Exception e) {
+        } catch (
+
+        Exception e)
+
+        {
             e.printStackTrace();
         }
 
