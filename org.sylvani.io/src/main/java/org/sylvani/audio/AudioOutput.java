@@ -1,13 +1,20 @@
+/**
+ * Copyright (c) 2015-2016 Harald Kuhn
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.sylvani.audio;
 
 import java.io.OutputStream;
 
 /**
- * Definition of an audio ouput like headphones, a speaker or for a writing to a file / clip
+ * Definition of an audio output like headphones, a speaker or for a writing to a file / clip
  * Also used by recognition service
  *
- * @author hkuhn
- *
+ *  @author Harald Kuhn (hkuhn42) initial api
  */
 public interface AudioOutput {
 
@@ -19,7 +26,7 @@ public interface AudioOutput {
     public String getName();
 
     /**
-     * an array containing all supported audio formats
+     * Aarray containing all supported audio formats
      *
      * @return
      */
@@ -43,7 +50,7 @@ public interface AudioOutput {
     public OutputStream getOutputStream(AudioFormat format) throws AudioException;
 
     /**
-     * Output audio from the povided source
+     * Output audio from the provided source
      * 
      * @param source
      * @throws AudioException
