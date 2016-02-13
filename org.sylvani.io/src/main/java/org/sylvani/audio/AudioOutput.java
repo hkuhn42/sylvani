@@ -14,7 +14,7 @@ import java.io.OutputStream;
  * Definition of an audio output like headphones, a speaker or for a writing to a file / clip
  * Also used by recognition service
  *
- *  @author Harald Kuhn (hkuhn42) initial api
+ * @author Harald Kuhn (hkuhn42) initial api
  */
 public interface AudioOutput {
 

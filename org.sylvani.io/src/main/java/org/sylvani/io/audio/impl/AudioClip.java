@@ -1,5 +1,10 @@
 /**
- *
+ * Copyright (c) 2015-2016 Harald Kuhn
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.sylvani.io.audio.impl;
 
@@ -19,12 +24,12 @@ import org.sylvani.audio.UnsupportedAudioFormatException;
 /**
  * A cached piece of audio data
  *
- * This is a temp implementation for development,
+ * This is a temp implementation for development
  *
  * In general this is a very bad way to handle binary data, the audio data should be stored somewhere if its size
  * exceeds a certain limit, something like TempFileItem of apache commons fileupload comes to mind
  *
- * @author hkuhn
+ * @author Harald Kuhn (hkuhn42) initial api
  */
 public class AudioClip implements Serializable, AudioSource, AudioOutput {
 
