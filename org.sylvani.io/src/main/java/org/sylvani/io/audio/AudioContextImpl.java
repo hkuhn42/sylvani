@@ -87,15 +87,16 @@ public class AudioContextImpl implements AudioContext {
         audioOutputs.put(key, output);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see org.sylvani.io.audio.AudioContext#relay(org.sylvani.audio.AudioSource, org.sylvani.audio.AudioOutput)
-     */
-    @Override
-    public void relay(AudioSource source, AudioOutput output) throws AudioException {
-        AudioUtil.stream(source, output);
+	@Override
+	public AudioOutput relay(AudioSource source) throws AudioException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    }
+	@Override
+	public AudioSource relay(AudioOutput source) throws AudioException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

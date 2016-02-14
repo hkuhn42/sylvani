@@ -49,10 +49,19 @@ public interface AudioSource {
     public InputStream getInputStream(AudioFormat format) throws AudioException;
 
     /**
-     * load data into
+     * Load data from this AudioSource to the given {@link AudioOutput} 
      *
      * @param output
      * @throws AudioException
      */
     public void stream(AudioOutput output) throws AudioException;
+    
+    /**
+     * Returns true if this AudioSource can stream to the given {@link AudioOutput}
+     * false otherwise
+     * 
+     * @param source
+     * @return true if the AudioSource can be processes
+     */
+    public boolean canStream(AudioOutput source);
 }

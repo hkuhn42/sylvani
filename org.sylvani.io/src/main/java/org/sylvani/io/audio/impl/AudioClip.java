@@ -117,4 +117,14 @@ public class AudioClip implements Serializable, AudioSource, AudioOutput {
         AudioUtil.stream(this, output);
     }
 
+	@Override
+	public boolean canStream(AudioSource source) {
+		return true;
+	}
+
+	@Override
+	public boolean canStream(AudioOutput source) {
+		return true;
+	}
+
 }
