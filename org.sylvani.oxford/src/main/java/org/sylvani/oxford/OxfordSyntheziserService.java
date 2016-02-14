@@ -8,6 +8,8 @@ import java.util.Locale;
 import java.util.logging.Logger;
 
 import org.glassfish.jersey.filter.LoggingFilter;
+import org.sylvani.audio.AudioCodec;
+import org.sylvani.audio.AudioContainer;
 import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
 import org.sylvani.io.audio.impl.AudioClip;
@@ -46,5 +48,15 @@ public class OxfordSyntheziserService implements ISyntheziserService {
         fragment.setData(data);
         return fragment;
     }
+
+	@Override
+	public AudioFormat[] getSupportedFormats() {
+		AudioFormat format = new AudioFormat();
+		format.setCodec(AudioCodec.PCM_SIGNED);
+		format.setBits(16);
+		format.setFrequency(16000);
+		format.setContainer(AudioContainer.WAVE);
+		return new AudioFormat[] {format};
+	}
 
 }

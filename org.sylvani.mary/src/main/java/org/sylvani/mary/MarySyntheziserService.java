@@ -11,6 +11,8 @@ import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
+import org.sylvani.audio.AudioCodec;
+import org.sylvani.audio.AudioContainer;
 import org.sylvani.audio.AudioException;
 import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
@@ -76,4 +78,13 @@ public class MarySyntheziserService implements ISyntheziserService {
 
         return fragment;
     }
+    
+    public AudioFormat[] getSupportedFormats() {
+		AudioFormat format = new AudioFormat();
+		format.setCodec(AudioCodec.PCM_SIGNED);
+		format.setBits(16);
+		format.setFrequency(16000);
+		format.setContainer(AudioContainer.WAVE);
+		return new AudioFormat[] {format};
+	}
 }
