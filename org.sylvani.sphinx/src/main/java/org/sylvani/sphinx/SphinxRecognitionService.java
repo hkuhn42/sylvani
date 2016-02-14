@@ -8,6 +8,9 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sylvani.audio.AudioCodec;
+import org.sylvani.audio.AudioContainer;
+import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
 import org.sylvani.io.voice.IRecognitionService;
 
@@ -54,5 +57,14 @@ public class SphinxRecognitionService implements IRecognitionService {
         }
         return "ok";
     }
+    
+	public AudioFormat[] getSupportedFormats() {
+		AudioFormat format = new AudioFormat();
+		format.setCodec(AudioCodec.PCM_SIGNED);
+		format.setBits(16);
+		format.setFrequency(16000);
+		format.setContainer(AudioContainer.WAVE);
+		return new AudioFormat[] {format};
+	}
 
 }

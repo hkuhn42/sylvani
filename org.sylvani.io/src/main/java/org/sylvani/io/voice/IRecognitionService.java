@@ -10,14 +10,30 @@ package org.sylvani.io.voice;
 
 import java.util.Locale;
 
+import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
 
 /**
- * @author hkuhn
- *
+ * Definition of a service for converting audio data with spoken language into text
+ * 
+ * @author Harald Kuhn (hkuhn42) initial api
  */
 public interface IRecognitionService {
 
+	/**
+	 * Converts audio data with spoken language into text
+	 * 
+	 * @param audioSource the source of audio data
+	 * @param locale the locale of the text
+	 * @return a textual representation of the voice data
+	 * @throws Exception
+	 */
     public String recognize(AudioSource audioSource, Locale locale) throws Exception;
 
+    /**
+     * Array containing all supported audio formats this RecognitionService can process
+     *
+     * @return and array of AudioFormat
+     */
+    public AudioFormat[] getSupportedFormats();
 }
