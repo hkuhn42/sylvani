@@ -1,5 +1,10 @@
 /**
- *
+ * Copyright (c) 2015-2016 Harald Kuhn
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.sylvani.io.interpreter;
 
@@ -19,24 +24,18 @@ import org.eclipse.smarthome.model.sitemap.SitemapProvider;
 import org.eclipse.smarthome.ui.items.ItemUIRegistry;
 
 /**
- * Dummy version of an ICommandInterpreter
+ * Very crude and simplified version of an ICommandInterpreter
+ * 
+ * This is only for "testing" the interface
  *
- * HAL9000 -> 2001
- * Vincent -> DAs Schwarze Loch
- * Kitt -> Night Rider
- *
- * TODO: take a look at RuleEngineImpl
- * move to new plugin
- *
- *
- * @author hkuhn
+ * @author Harald Kuhn (hkuhn42) initial api
  */
 public class HAL9000 implements ICommandInterpreter {
 
     private Logger logger = Logger.getLogger(HAL9000.class.getName());
 
     public HAL9000() {
-        System.err.println("hal is in orbit of jupiter");
+        System.out.println("hal is in orbit of jupiter");
     }
 
     protected ThingRegistry thingRegistry;
@@ -49,15 +48,6 @@ public class HAL9000 implements ICommandInterpreter {
     public String handleCommand(String commandSentence) {
         if (commandSentence == null) {
             return "no command found";
-        }
-
-        Command command = OnOffType.OFF;
-
-        // String[] commandSentenceArray = commandSentence.split("\\s+");
-        if (commandSentence.endsWith("on")) {
-            command = OnOffType.ON;
-        } else if (commandSentence.endsWith("on")) {
-            command = OnOffType.OFF;
         }
 
         if (commandSentence.contains("light")) {
@@ -83,8 +73,17 @@ public class HAL9000 implements ICommandInterpreter {
                     for (Channel def : thing.getChannels()) {
                         buffer.append("- " + def.getUID() + " " + def.getAcceptedItemType() + "\n");
                         if ("Dimmer".endsWith(def.getAcceptedItemType())) {
+                        	
+                            Command command = OnOffType.OFF;
+
+                            if (commandSentence.endsWith("on")) {
+                                command = OnOffType.ON;
+                            } else if (commandSentence.endsWith("on")) {
+                                command = OnOffType.OFF;
+                            }
+                        	
                             thing.getHandler().handleCommand(def.getUID(), command);
-                            return "ok"; // todo: wait for event on bus
+                            return "ok"; // TODO: wait for event on bus
                         }
                     }
                 }
