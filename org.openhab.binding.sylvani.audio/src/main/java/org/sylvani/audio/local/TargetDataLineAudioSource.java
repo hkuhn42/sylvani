@@ -84,4 +84,9 @@ public class TargetDataLineAudioSource implements AudioSource {
         AudioUtil.stream(this, output);
     }
 
+    @Override
+    public boolean canStream(AudioOutput source) {
+        // FIXME: complete auto matching of formats
+        return true;
+    }
 }

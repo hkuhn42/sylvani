@@ -80,7 +80,7 @@ public class SourceDataLineAudioOutput implements AudioOutput {
 
         @Override
         public void write(int i) throws IOException {
-            throw new UnsupportedOperationException("always user write(byte[]9");
+            throw new UnsupportedOperationException("always user write(byte[])");
         }
 
         @Override
@@ -92,5 +92,11 @@ public class SourceDataLineAudioOutput implements AudioOutput {
     @Override
     public void stream(AudioSource source) throws AudioException {
         AudioUtil.stream(source, this);
+    }
+
+    @Override
+    public boolean canStream(AudioSource source) {
+        // FIXME: complete auto matching of formats
+        return true;
     }
 }
