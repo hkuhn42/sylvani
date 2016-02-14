@@ -18,6 +18,7 @@ import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
 import org.sylvani.io.audio.impl.AudioClip;
 import org.sylvani.io.voice.ISyntheziserService;
+import org.sylvani.io.voice.Voice;
 
 import marytts.LocalMaryInterface;
 import marytts.MaryInterface;
@@ -45,13 +46,18 @@ import marytts.util.data.audio.MaryAudioUtils;
  */
 public class MarySyntheziserService implements ISyntheziserService {
 
+	public  MarySyntheziserService() {
+		// TODO analyze available voices
+		// marytts.getAvailableVoices();
+	}
+	
     @Override
-    public AudioSource synthesize(String text, Locale locale, String voice, AudioFormat requestedFormat)
+    public AudioSource synthesize(String text, Voice voice, AudioFormat requestedFormat)
             throws AudioException {
         AudioClip fragment;
         try {
             MaryInterface marytts = new LocalMaryInterface();
-            marytts.setLocale(locale);
+            marytts.setLocale(voice.getLocale());
             AudioInputStream audio = marytts.generateAudio(text);
 
             DDSAudioInputStream outputAudio = new DDSAudioInputStream(
@@ -87,4 +93,16 @@ public class MarySyntheziserService implements ISyntheziserService {
 		format.setContainer(AudioContainer.WAVE);
 		return new AudioFormat[] {format};
 	}
+    
+    @Override
+    public Voice[] getAvailableVoices() {
+    	// marytts.getAvailableVoices();
+    	return null;
+    }
+    
+    @Override
+    public Voice getDefaultVoice(Locale locale) {
+
+    	return null;
+    }
 }

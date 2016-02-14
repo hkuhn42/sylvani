@@ -14,6 +14,7 @@ import org.sylvani.audio.AudioFormat;
 import org.sylvani.audio.AudioSource;
 import org.sylvani.io.audio.impl.AudioClip;
 import org.sylvani.io.voice.ISyntheziserService;
+import org.sylvani.io.voice.Voice;
 
 /**
  * @author hkuhn
@@ -21,6 +22,8 @@ import org.sylvani.io.voice.ISyntheziserService;
  */
 public class OxfordSyntheziserService implements ISyntheziserService {
 
+	private OxfordVoice hedda = new OxfordVoice("Female", new Locale("de-DE"), "Hedda)");
+	
     private java.util.Properties props;
 
     public OxfordSyntheziserService() {
@@ -59,4 +62,13 @@ public class OxfordSyntheziserService implements ISyntheziserService {
 		return new AudioFormat[] {format};
 	}
 
+	@Override
+	public Voice[] getAvailableVoices() {
+		return new Voice[] {hedda};
+	}
+	
+	@Override
+	public Voice getDefaultVoice(Locale locale) {
+		return hedda;
+	}
 }

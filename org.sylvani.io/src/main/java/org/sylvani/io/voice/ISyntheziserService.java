@@ -16,7 +16,7 @@ import org.sylvani.audio.AudioSource;
 /**
  * Definition of a service for synthezising voice output as audio data
  * 
- * @author Harald Kuhn (hkuhn42) initial api *
+ * @author Harald Kuhn (hkuhn42) initial api
  */
 public interface ISyntheziserService {
 
@@ -26,20 +26,34 @@ public interface ISyntheziserService {
 	 * Voice and format info should be optional
 	 * 
 	 * @param text
-	 * @param locale
 	 * @param voice
 	 * @param requestedFormat
 	 * @return
 	 * @throws Exception
 	 */
-    public AudioSource synthesize(String text, Locale locale, String voice, AudioFormat requestedFormat)
+    public AudioSource synthesize(String text, Voice voice, AudioFormat requestedFormat)
             throws Exception;
     
     /**
      * Array containing all supported audio formats this SyntheziserService can produce
      *
-     * @return and array of AudioFormat
+     * @return an array of AudioFormat
      */
     public AudioFormat[] getSupportedFormats();
+    
+    /**
+     * Get the default voice for the given locale or null if it is not supported 
+     * 
+     * @param locale
+     * @return
+     */
+    public Voice getDefaultVoice(Locale locale);
+
+    /**
+     * An array containing all supported voices of this SyntheziserService
+     * 
+     * @return an array of Voice implementations
+     */
+    public Voice[] getAvailableVoices();
 
 }
