@@ -9,6 +9,7 @@
 package org.sylvani.audio;
 
 import java.io.OutputStream;
+import java.util.Set;
 
 /**
  * Definition of an audio output like headphones, a speaker or for a writing to a file / clip
@@ -26,11 +27,11 @@ public interface AudioOutput {
     public String getName();
 
     /**
-     * Array containing all supported audio formats this output can process
+     * A set containing all supported audio formats this output can process
      *
      * @return
      */
-    public AudioFormat[] getSupportedFormats();
+    public Set<AudioFormat> getSupportedFormats();
 
     /**
      * An output stream for writing audio data in the default {@link AudioFormat} of this output

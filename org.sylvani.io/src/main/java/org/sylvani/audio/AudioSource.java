@@ -9,6 +9,7 @@
 package org.sylvani.audio;
 
 import java.io.InputStream;
+import java.util.Set;
 
 /**
  * Wrapper for a source of audio data
@@ -25,11 +26,11 @@ public interface AudioSource {
     public String getName();
 
     /**
-     * an array containing all supported audio formats
+     * A Set containing all supported audio formats
      *
      * @return
      */
-    public AudioFormat[] getSupportedFormats();
+    public Set<AudioFormat> getSupportedFormats();
 
     /**
      * Gives access to an InputStream for reading audio data, the format is the default format
