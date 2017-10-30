@@ -1,3 +1,7 @@
+The audio api lives on in the official audio api of eclipse smart home. The rest of the project currently is dormant and will no longer be maintained.
+
+------------------------------------------------------------------------------------------------------
+
 An experimental implementation of a voice command api for eclipse smarthome / openhab2 which defines:
 - an audio api
 - interfaces and sample implementations for voice to text and text to voice 
